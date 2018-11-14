@@ -19,7 +19,9 @@ public class GraphUtils {
 			return -1;
 		}
 		BreadthFirstSearch myBreadthSearch = new BreadthFirstSearch(graph);
-		myBreadthSearch.bfs(graph.getNode(src), dest);
+		if (!myBreadthSearch.bfs(graph.getNode(src), dest)) {
+			return -1;
+		}
 		return myBreadthSearch.getEdgeCount();
 	}
 	
@@ -37,6 +39,10 @@ public class GraphUtils {
 		/* IMPLEMENT THIS METHOD! */
 		
 		return true; // this line is here only so this code will compile if you don't modify it
+	}
+
+	public static void main(String[] args) {
+		GraphBuilder.buildDirectedGraph("graph_builder_test.txt");
 	}
 	
 }
