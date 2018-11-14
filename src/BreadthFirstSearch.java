@@ -14,16 +14,22 @@ import java.util.Set;
 public class BreadthFirstSearch {
 	protected Set<Node> marked;
 	protected Graph graph;
+	private static int edgeCount;
 
 	public BreadthFirstSearch(Graph graphToSearch) {
 		marked = new HashSet<Node>();
 		graph = graphToSearch;
+	}
+
+	public int getEdgeCount() {
+		return edgeCount;
 	}
 	
 	/**
 	 * This method was discussed in the lesson
 	 */
 	public boolean bfs(Node start, String elementToFind) {
+		edgeCount = 0;
 		if (!graph.containsNode(start)) {
 				return false;
 		}
@@ -34,6 +40,7 @@ public class BreadthFirstSearch {
 		marked.add(start);
 		toExplore.add(start);
 		while (!toExplore.isEmpty()) {
+			edgeCount++;
 			Node current = toExplore.remove();
 			for (Node neighbor : graph.getNodeNeighbors(current)) {
 				if (!marked.contains(neighbor)) {

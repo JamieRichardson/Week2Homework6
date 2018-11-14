@@ -12,10 +12,15 @@ import java.util.Set;
 public class GraphUtils {
 
 	public static int minDistance(Graph graph, String src, String dest) {
-
-		/* IMPLEMENT THIS METHOD! */
-		
-		return -2; // this line is here only so this code will compile if you don't modify it
+		if (graph == null || src == null || dest == null) {
+			return -1;
+		}
+		if (!graph.containsNode(graph.getNode(src)) || !graph.containsNode(graph.getNode(dest))) {
+			return -1;
+		}
+		BreadthFirstSearch myBreadthSearch = new BreadthFirstSearch(graph);
+		myBreadthSearch.bfs(graph.getNode(src), dest);
+		return myBreadthSearch.getEdgeCount();
 	}
 	
 
